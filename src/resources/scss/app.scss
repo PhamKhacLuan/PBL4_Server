@@ -1,0 +1,173 @@
+.header-shop {
+  background-color: #563d7c;
+}
+
+.header {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.badge {
+  border-radius: 1.25em;
+}
+
+.list-group-item.active {
+  z-index: 0;
+  color: #fff;
+  background-color: #563d7c;
+  border-color: #563d7c;
+}
+
+.body-header {
+  margin-top: 80px;
+}
+
+.oi.oi-cart {
+  color: white;
+}
+
+.icon-fb:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.icon-fb {
+  font-size: 20px;
+  color: black;
+  background-color: #82938b;
+  text-align: center;
+  width: 30px;
+  line-height: 1;
+  border-radius: 4px;
+  margin: 4px;
+  display: inline-block;
+  padding: 5px;
+}
+
+.icon-cart,
+.icon-user {
+  font-size: 25px;
+  color: #ccc;
+}
+
+//Begin login modal
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 400px;
+
+    .modal-content {
+      padding: 1rem;
+    }
+  }
+}
+
+.modal-header {
+  .close {
+    margin-top: -1.5rem;
+  }
+}
+
+.form-title {
+  margin: -2rem 0rem 1rem;
+}
+
+.btn-round {
+  border-radius: 3rem;
+}
+
+.delimiter {
+  padding: 1rem;
+}
+
+.social-buttons {
+  .btn {
+    margin: 0 0.5rem 1rem;
+  }
+}
+
+.signup-section {
+  padding: 0.3rem 0rem;
+}
+
+//End login modal
+
+//Begin register modal
+.modal-second {
+  z-index: 1052;
+}
+
+//multiple modal popup
+.modal-backdrop.fade {
+  &+.modal-backdrop.fade {
+    z-index: 1051;
+  }
+}
+
+//end register modal
+
+// Begin footer
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+section {
+  padding: 8rem 0 1rem 0;
+}
+
+p {
+  font-weight: 600;
+}
+
+.col-lg-8 hr {
+  max-width: 150px;
+  border-width: 3px;
+  border-color: rgb(30, 31, 92);
+}
+
+footer {
+  padding: 25px 0;
+  text-align: center;
+}
+
+footer p {
+  font-size: 13px;
+  margin: 0;
+}
+
+
+// End Footer
+// begin list product
+.card:hover {
+  box-shadow: 20px 20px 80px -44px #000;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+// end list product
+
+
+// start detail products
+.product_view .modal-dialog {
+  max-width: 800px;
+  width: 100%;
+}
+
+.pre-cost {
+  text-decoration: line-through;
+  color: #a5a5a5;
+}
+
+.space-ten {
+  padding: 10px 0;
+}
+
+// end detail products
