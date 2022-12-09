@@ -9,7 +9,7 @@ const InforProductModels = new Schema({
     brand: { type: String, maxLength: 55 },
     price: { type: String, maxLength: 15},
     system: { type: String, maxLength: 15 },
-    img: { type: String, maxLength: 255 },
+    img: { data: Buffer, contentType: String},
     memory: { type: String, maxLength: 10 },
     ram: { type: String, maxLength: 10 },
     description: { type: String, maxLength: 300 },

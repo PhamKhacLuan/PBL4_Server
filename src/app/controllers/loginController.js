@@ -9,10 +9,9 @@ let checkedLogin = async (req, res) => {
     let password = req.body.password;
     let userData = await handleLogin.handleUserLogin(email, password);
     if (userData.errCode !== 0) {
-        res.render('home', {
-            errorLogin: [
-                userData.errMessage
-            ]
+        res.json({
+            message: userData.errMessage,
+            role : "null"
         })
     } else {
         req.session.user =
@@ -22,8 +21,14 @@ let checkedLogin = async (req, res) => {
             address: userData.user.address,
             email: userData.user.email
         }
-        if(userData.user.role === 'user') res.redirect(`/`);
-        else res.redirect(`/admin`);
+        if (userData.user.role === 'user') res.json({
+            message: "Đăng nhập thành công",
+            role: userData.user.role
+        });
+        else res.json({
+            message: "Đăng nhập thành công",
+            role: userData.user.role
+        });
     }
 }
 
