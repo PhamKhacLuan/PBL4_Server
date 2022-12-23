@@ -13,10 +13,24 @@ class ProductController {
     //[POST] //admin/product/stored
     stored(req, res, next) {
         const product = new Product(req.body);
-        product.img.data = fs.readFileSync(product.img.contentType);
+        var data = fs.readFileSync(product.img.contentType, function(err){
+            if(err){
+                res.json({
+                    message: "Không thể thêm ảnh",
+                    error: err.message 
+                })
+            }
+        });
+        var linkImg = product.img.contentType;
+        var nameImg = linkImg.split('\\')[linkImg.split('\\').length - 1];
+        fs.writeFileSync('src\\public\\img\\' + nameImg, data);
+        product.img.name = nameImg;
+        product.img.contentType = 'src\\public\\img\\' + nameImg;
         product.save()
             .then(() => {
-                res.redirect('/admin/product/show')
+                res.json({
+                    message: "Thêm đơn hàng thành công"
+                })
             })
             .catch(error => {
                 res.json({
@@ -58,11 +72,26 @@ class ProductController {
 
     //[PUT] //admin/product/:id
     update(req, res, next) {
-        req.body.img.data = fs.readFileSync(req.body.img.contentType);
-        Product.updateOne({ _id: req.params.id }, req.body)
-            .then(() => res.redirect('/admin/product/show'))
+        const product = new Product(req.body);
+        var data = fs.readFileSync(product.img.contentType);
+        var linkImg = product.img.contentType;
+        var nameImg = linkImg.split('\\')[linkImg.split('\\').length - 1];
+        Product.findById(product._id)
+            .then((sanpham)=>{
+                console.log(sanpham.img.contentType);
+                if(sanpham.img.contentType != 'scr\\public\\img\\' + nameImg)
+                {
+                    fs.writeFileSync('src\\public\\img\\' + nameImg, data);
+                }
+            })
+        product.img.name = nameImg;
+        product.img.contentType = 'src\\public\\img\\' + nameImg;  
+        Product.updateOne({ _id: product._id }, product)
+            .then(() => res.json({
+                message : "Cập nhật thành công"
+            }))
             .catch(error => res.json({
-                messageError: "Cập nhật thất bại",
+                message: "Cập nhật thất bại",
                 error: error
             }))
     }
