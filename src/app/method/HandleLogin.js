@@ -29,7 +29,7 @@ let handleUserLogin = (email, password) => {
                     .catch(err => res.status(400).send(err));
             } else {
                 userData.errCode = 1;
-                userData.errMessage = `Username khong ton tai`;
+                userData.errMessage = `Username không tồn tại`;
                 resolve(userData);
             }
         } catch (err) {

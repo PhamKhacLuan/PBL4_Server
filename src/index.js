@@ -39,7 +39,6 @@ app.use(session({
     saveUninitialized: true,
 }))
 
-app.use(loginMiddleware);
 
 route(app);
 app.listen(port, () => {

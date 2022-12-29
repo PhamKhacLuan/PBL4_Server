@@ -54,7 +54,7 @@ class OrderController {
         Order.deleteOne({ _id: req.params.id })
             .then(() => res.redirect('/admin/order/show'))
             .catch(error => res.json({
-                messageError: "Xóa cứng thất bại",
+                messageError: "Xóa thất bại",
                 error: error
             }))
     }

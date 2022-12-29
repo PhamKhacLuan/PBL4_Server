@@ -1,13 +1,7 @@
-// const Course = require('../models/Course');
 const { mutipleMongooseToObject, mongooseToObject } = require('../../util/mongoose')
 const Product = require('../models/InforProductModels');
 
 class AdminController {
-    // [GET] //admin/product/create
-    create(req, res, next) {
-
-    }
-
     //[POST] //admin/product/stored
     stored(req, res, next) {
         const product = new Product(req.body);
@@ -17,7 +11,7 @@ class AdminController {
             })
             .catch(error => {
                 res.json({
-                    messageError: "Có lỗi khi thêm sản phầm",
+                    messageError: "Có lỗi khi thêm sản phẩm",
                     error: error
                 })
             })
@@ -52,7 +46,6 @@ class AdminController {
                 error: error
             }))
     }
-    
     //[PUT] //admin/product/:id
     update(req,res,next){
         Product.updateOne({_id: req.params.id},req.body)
@@ -62,33 +55,12 @@ class AdminController {
                 error: error
             }))
     }
-
     //[DELETE] //admin/product/:id/force
     forceDelete(req, res, next) {
         Product.deleteOne({_id: req.params.id})
             .then(() => res.redirect('/admin/product/show'))
             .catch(error => res.json({
-                messageError: "Xóa cứng thất bại",
-                error: error
-            }))
-    }
-
-    //[DELETE] //admin/product/:id
-    delete(req, res, next) {
-        Product.delete({_id: req.params.id})
-            .then(() => res.redirect('/admin/product/show'))
-            .catch(error => res.json({
-                messageError: "Xóa mềm thất bại",
-                error: error
-            }))
-    }
-
-    //[PATCH] //admin/products/:id/restore
-    restore(req, res, next) {
-        Product.restore({_id: req.params.id})
-            .then(() => res.redirect('/admin/product/show'))
-            .catch(error => res.json({
-                messageError: "Khôi phục thất bại",
+                messageError: "Xóa thất bại",
                 error: error
             }))
     }

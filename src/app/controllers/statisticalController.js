@@ -1,4 +1,3 @@
-// const Course = require('../models/Course');
 const { mutipleMongooseToObject, mongooseToObject } = require('../../util/mongoose')
 const Product = require('../models/InforProductModels');
 const Order = require('../models/Order');

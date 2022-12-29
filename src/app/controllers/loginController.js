@@ -39,43 +39,43 @@ let logout = function (req, res) {
     res.redirect(`/`);
 }
 
-let register = async (req, res) => {
-    const email = req.body.email.toLowerCase();
-    req.body.email = email;
-    let userData = await handleLogin.checkExistEmail(email);
-    if (userData.errCode !== 0) {
-        res.render('home', {
-            erroCodeR: [1],
-            errorRegister: [
-                userData.errMessage
-            ],
-            name: [req.body.name],
-            phone: [req.body.phone],
-            address: [req.body.address],
-            email: [req.body.email]
-        })
-    } else {
-        const hashPassword = bcrypt.hashSync(req.body.password, SALT_ROUNDS);
-        req.body.password = hashPassword;
-        const newUser = new InforUserModels(req.body);
-        newUser.role = 'user';
-        newUser.save()
-            .then(() => res.render('home', {
-                success: [
-                    "Đăng ký thành công"
-                ]
-            }))
-            .catch(error => res.render('home', {
-                erroCodeR: [1],
-                errorConstructor: [
-                    "Có lỗi trong quá trình khởi tạo vui lòng thử lại"
-                ]
-            }))
-    }
-}
+// let register = async (req, res) => {
+//     const email = req.body.email.toLowerCase();
+//     req.body.email = email;
+//     let userData = await handleLogin.checkExistEmail(email);
+//     if (userData.errCode !== 0) {
+//         res.render('home', {
+//             erroCodeR: [1],
+//             errorRegister: [
+//                 userData.errMessage
+//             ],
+//             name: [req.body.name],
+//             phone: [req.body.phone],
+//             address: [req.body.address],
+//             email: [req.body.email]
+//         })
+//     } else {
+//         const hashPassword = bcrypt.hashSync(req.body.password, SALT_ROUNDS);
+//         req.body.password = hashPassword;
+//         const newUser = new InforUserModels(req.body);
+//         newUser.role = 'user';
+//         newUser.save()
+//             .then(() => res.render('home', {
+//                 success: [
+//                     "Đăng ký thành công"
+//                 ]
+//             }))
+//             .catch(error => res.render('home', {
+//                 erroCodeR: [1],
+//                 errorConstructor: [
+//                     "Có lỗi trong quá trình khởi tạo vui lòng thử lại"
+//                 ]
+//             }))
+//     }
+// }
 
 module.exports = {
     checkedLogin: checkedLogin,
     logout: logout,
-    register: register
+    // register: register
 }

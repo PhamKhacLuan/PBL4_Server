@@ -11,6 +11,7 @@ const Order = new Schema({
     phone: { type: String, maxLength: 20 },
     sum: { type: String, maxLength: 100 },
     detailOrder: [{
+        idProduct: { type: String, maxLength: 55},
         nameProduct: { type: String, maxLength: 55 },
         price: { type: String, maxLength: 15 },
          amount: { type: String, maxLength: 10 }
