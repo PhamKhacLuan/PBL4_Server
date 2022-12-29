@@ -13,7 +13,7 @@ const Order = new Schema({
     detailOrder: [{
         nameProduct: { type: String, maxLength: 55 },
         price: { type: String, maxLength: 15 },
-         amount: { type: String, maxLength: 10 }
+        amount: { type: String, maxLength: 10 }
     }],
     createAt: { type: Date, default: Date.now },
     updateAt: { type: Date, default: Date.now },
