@@ -144,7 +144,7 @@ class ProductController {
 
     //[GET] /admin/product/img
     getImg(req, res) {
-        let imgName = "../Server/src/public/img/" + req.query.img_name;
+        let imgName = "src/public/img/" + req.query.img_name;
         fs.readFile(imgName, (err, data) => {
             if (err) {
                 res.json({

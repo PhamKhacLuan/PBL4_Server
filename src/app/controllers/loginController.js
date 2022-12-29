@@ -23,11 +23,13 @@ let checkedLogin = async (req, res) => {
         }
         if (userData.user.role === 'user') res.json({
             message: "Đăng nhập thành công",
-            role: userData.user.role
+            role: userData.user.role,
+            name: userData.user.name
         });
         else res.json({
             message: "Đăng nhập thành công",
-            role: userData.user.role
+            role: userData.user.role,
+            name: userData.user.name
         });
     }
 }
